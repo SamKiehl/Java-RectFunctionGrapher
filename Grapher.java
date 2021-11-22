@@ -31,7 +31,6 @@ public class Grapher extends Canvas{
     
         g.setColor(Color.GREEN); 
         
-
         for(int x = -xDim/2; x < this.xDim/2; x++){
             int x0 = x + xDim / 2;
             g.setColor(Color.GREEN);
@@ -53,11 +52,15 @@ public class Grapher extends Canvas{
         double 
         // Set y equal to a function in terms of x.
         
-        y = -Math.sqrt(32000 - Math.pow(x, 2));
+        y = 0.0001 * Math.pow(x, 3)  // 0.0001x^3
+        
+        ;
 
 
         return this.yDim / 2 - (int)Math.round(y);
     }
+    public int getXDim(){return this.xDim;}
+    public int getYDim(){return this.yDim;}
     public String toString(){
         return this.name + ", " + this.xDim + " x " + this.yDim;
     }
