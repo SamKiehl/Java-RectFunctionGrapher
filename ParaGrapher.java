@@ -2,11 +2,13 @@ import java.awt.*;
 import java.util.Scanner;
 public class ParaGrapher extends Grapher{
     double tMin, tMax, tStep;
-    public ParaGrapher(String name, int xDim, int yDim, double tMin, double tMax, double tStep){
+    int scalar;
+    public ParaGrapher(String name, int xDim, int yDim, double tMin, double tMax, double tStep, int scalar){
         super(name, xDim, yDim, 0);
         this.tMin = tMin;
         this.tMax = tMax;
         this.tStep = tStep;
+        this.scalar = scalar;
     }
     @Override
     public void paint(Graphics g){    
@@ -24,17 +26,19 @@ public class ParaGrapher extends Grapher{
         }
     }
     public int functionX(double t){
-        return this.getXDim()/2+(int)Math.round(
-            80 * Math.cos(t) + 120 * Math.cos((2 * t)/3)
-        );
+        return this.getXDim()/2+(int)Math.round((scalar*(
+            //80 * Math.cos(t) + 120 * Math.cos((2 * t)/3)
+            Math.sin(5 * t)
+        )));
     }
     public int functionY(double t){
-        return this.getYDim()/2 - (int)Math.round(
-            80 * Math.sin(t) - 120 * Math.sin((2 * t)/3)
-        );
+        return this.getYDim()/2 - (int)Math.round((scalar*(
+            //80 * Math.sin(t) - 120 * Math.sin((2 * t)/3)
+             Math.sin(6 * t)
+        )));
     }
     public static void main(String[] args){
-        ParaGrapher pg = new ParaGrapher("ParaGrapher", 400, 400, 0, 20, 0.1);
+        ParaGrapher pg = new ParaGrapher("ParaGrapher", 400, 400, 0, 20, 0.01, 100);
 
 
 
